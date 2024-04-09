@@ -34,7 +34,7 @@ public class PacienteServiceImpl implements IPacienteService {
         Optional<Paciente> paciente = repo.findAll().stream()
                 .filter(p -> uuid.equals(p.getId_paciente()))
                 .findFirst();
-        if (paciente.isEmpty() || paciente.equals(null)) {
+        if (paciente.isEmpty() || paciente.equals("")) {
             throw new ModelException("Paciente not found with UUID: " + uuid);
         } else {
             paciente.ifPresent(repo::delete);
