@@ -1,5 +1,6 @@
 package com.mitocode.repo.Service.impl;
 
+import com.mitocode.repo.CommonLibrary.Exception.ModelException;
 import com.mitocode.repo.Model.Especialidad;
 import com.mitocode.repo.Repo.IEspecialidadRepo;
 import com.mitocode.repo.Service.IEspecialidadService;
@@ -25,16 +26,23 @@ public class EspecialidadServiceImpl implements IEspecialidadService {
 
     @Override
     public void deleteByUUID(String uuid) {
-        repo.findAll().stream()
-                .filter(paciente -> uuid.equals(paciente.getId_role()))
-                .findFirst().ifPresent(repo::delete);
+        Optional<Especialidad> especialidad = repo.findAll().stream().filter(paciente -> uuid.equals(paciente.getId_especialidad())).findFirst();
+
+        if (especialidad.isEmpty() || especialidad.equals("")) {
+            throw new ModelException("Especialidad not found with UUID: " + uuid);
+        }
+        especialidad.ifPresent(repo::delete);
     }
 
     @Override
     public Optional<Especialidad> findByUUID(String uuid) {
-        return repo.findAll().stream()
-                .filter(paciente -> uuid.equals(paciente.getId_role()))
+        Optional<Especialidad> especialidad = repo.findAll().stream()
+                .filter(paciente -> uuid.equals(paciente.getId_especialidad()))
                 .findFirst();
+        if (especialidad.isEmpty() || especialidad.equals("")) {
+            throw new ModelException("Especialidad not found with UUID: " + uuid);
+        }
+        return especialidad;
     }
 
     @Override

@@ -15,8 +15,8 @@ public class EspecialidadController {
     private IEspecialidadService especialidadService;
 
     @PostMapping("/save")
-    public Especialidad guardar(@RequestBody Especialidad paciente) {
-        return especialidadService.save(paciente);
+    public Especialidad guardar(@RequestBody Especialidad especialidad) {
+        return especialidadService.save(especialidad);
     }
 
     @GetMapping("/show-all")
@@ -30,8 +30,8 @@ public class EspecialidadController {
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody Especialidad persona) {
-        especialidadService.update(persona);
+    public void update(@RequestBody Especialidad especialidad) {
+        especialidadService.update(especialidad);
     }
 
     @DeleteMapping("/delete")

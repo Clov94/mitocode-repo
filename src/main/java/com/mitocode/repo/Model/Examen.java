@@ -3,6 +3,8 @@ package com.mitocode.repo.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Objects;
+
 @Entity
 @Data
 @Table(name = "examen")
@@ -15,4 +17,16 @@ public class Examen {
     private String name;
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Examen examen)) return false;
+        return Objects.equals(getId_examen(), examen.getId_examen());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId_examen());
+    }
 }

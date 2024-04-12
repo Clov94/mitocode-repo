@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @Data
 @Table(name = "paciente")
 public class Paciente extends RepresentationModel<Paciente> {
-   @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_paciente", nullable = false)
     private String id_paciente;

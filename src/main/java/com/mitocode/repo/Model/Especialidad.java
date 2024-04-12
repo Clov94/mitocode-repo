@@ -9,10 +9,10 @@ import lombok.Data;
 public class Especialidad {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_role", nullable = false)
-    private String id_role;
-    @Column(name = "role", nullable = false)
-    private String role;
+    @Column(name = "id_especialidad", nullable = false)
+    private String id_especialidad;
+    @Column(name = "especialidad", nullable = false)
+    private String especialidad;
     @Column(name = "description", nullable = false)
     private String description;
 }

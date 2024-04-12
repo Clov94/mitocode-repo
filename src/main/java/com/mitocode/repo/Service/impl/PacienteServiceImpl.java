@@ -14,7 +14,6 @@ import java.util.Optional;
 public class PacienteServiceImpl implements IPacienteService {
     @Autowired
     private IPacienteRepo repo;
-    private ModelException modelException;
 
     @Override
     public Paciente save(Paciente paciente) {
